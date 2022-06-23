@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block head %}  Welcom to product List, {{ user.username|default:'Guest' }} {% endblock head%}
+
+{% block content %}
+
+<div class="card">
+  
+  
+  {% if user.is_authenticated %}
+  <div>
+    <table style="width:90%;text-align: center;">
+      <th>ID</th>
+      <th>Name</th>
+      <th>Thumb</th>
+      {% for product in products %}
+      <tr>
+        <td> {{ product.id }}</td>
+        <td> {{ product.Name }}</td>
+        
+        <td>
+         <a href="{% url 'detail' id=product.id %}">
+          <img src='/media/{{product.Image}}' alt='{{product.Name}}' width="100px" height="100px"/> </td>
+        </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  
+
+  {% else %}
+  <p>Welcome Guest to the Our site Please sign up or login to be able to view our products</p>
+  {% endif %}
+</div>
+</div>
+</div>
+
+     
+    {% endblock content %}
+    

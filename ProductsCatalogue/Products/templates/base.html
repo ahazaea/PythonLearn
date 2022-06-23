@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Products Catalogue</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>{% block head %} {% endblock head%}</h1>
+    </div>
+    <div class="topnav">
+     
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" style="float:right">Logout</a>
+      {% else %}
+      <a href="{% url 'signup' %}">Sign Up</a>
+      <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+      <a href="{% url 'home' %}" style="float:right">Home</a>
+    </div>
+
+    {% block content %}{% endblock content %}
+
+    <div class="footer">
+      <h2>Product List App @sco</h2>
+    </div>
+  </body>
+</html>

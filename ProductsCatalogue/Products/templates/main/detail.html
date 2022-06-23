@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block head %} {{product.Name}} {% endblock head%} 
+{% block content %} {% if user.is_authenticated %}
+<div class="card">
+
+
+<p>
+  <img src="/media/{{product.Image}}" alt="{{product.Name}}" />
+</p>
+<p>{{product.description}}</p>
+{% else %}
+<p>
+  Welcome Guest to the Our site Please sign up or login to be able to view our
+  products
+</p>
+<a href="{% url 'signup' %}">Sign Up</a>
+<a href="{% url 'login' %}">Login</a>
+
+{% endif %}
+
+</div>
+{% endblock content %}
